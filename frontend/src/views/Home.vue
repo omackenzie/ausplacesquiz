@@ -66,12 +66,12 @@ export default {
         You have named <span>{{ namedPlaces.length }}</span> <span v-if="namedPlaces.length == 1">place</span><span v-else>places</span> so far.
       </div>
 
-      <div v-if="namedPlaces.length > 0" class="flex w-96 mt-4">
-        <label for="end-game-modal" class="btn btn-secondary w-1/2 mr-2">End Game</label>
+      <div v-if="namedPlaces.length > 0" class="flex w-96 mt-4 gap-x-2 justify-center" style="max-width: 90vw;">
+        <label for="end-game-modal" class="btn btn-secondary w-1/2">End Game</label>
         <label for="clear-modal" class="btn btn-error w-1/2">Clear</label>
       </div>
 
-      <details v-if="namedPlaces.length > 0" class="mt-6">
+      <details v-if="namedPlaces.length > 0" class="mt-6 max-w-full">
         <summary class="cursor-pointer">View Named Places</summary>
         <PlacesList :places="namedPlaces" class="mx-2" />
       </details>

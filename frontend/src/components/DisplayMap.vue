@@ -14,8 +14,8 @@ export default {
   data() {
     return {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      zoom: 4,
-      minZoom: 4,
+      zoom: 4.5,
+      minZoom: 3,
       maxZoom: 9,
       center: [-24.963907, 134.350432],
       maxBounds: [[-0.300873, 85], [-47.601616, 182]],
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-  <div class="mt-10" style="height:600px; width:800px">
+  <div class="mt-10 px-2" style="width: 960px; height:600px; max-width: 100vw; max-height: 65vh;">
     <l-map :useGlobalLeaflet="false" ref="map" :zoom="zoom" :minZoom="minZoom" :maxZoom="maxZoom" :center="center" :maxBounds="maxBounds" :options="mapOptions" :zoomAnimation="true">
       <l-tile-layer
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png"

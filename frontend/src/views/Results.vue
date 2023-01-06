@@ -15,7 +15,8 @@ export default {
       pageURL: window.location.href,
       resultID: this.$route.params.id,
       namedPlaces: [],
-      creationDate: ''
+      creationDate: '',
+      error: '',
     }
   },
   methods: {
@@ -31,14 +32,20 @@ export default {
       .from('results')
       .upsert({'id': this.resultID})
       .select()
-      .then(response => response.data[0])
-      .then(data => this.handlePlaceIDs(Array.from(data.place_ids.split(','), Number), data.created_at));
+      .then(response => {
+        if (response.status == 400) {
+          this.error = 'Invalid result ID';
+        } else {
+          const data = response.data[0];
+          this.handlePlaceIDs(Array.from(data.place_ids.split(','), Number), data.created_at)
+        }
+      });
   }
 }
 </script>
 
 <template>
-  <div v-if="namedPlaces">
+  <div v-if="namedPlaces.length > 0">
     <div class="flex flex-col items-center w-full">
       <router-link to="/" class="mt-6 block text-primary">&lt; return home</router-link>
       <h1 class="text-3xl font-bold mt-6 mb-4">
@@ -48,7 +55,7 @@ export default {
       
       <DisplayMap :places="namedPlaces" />
 
-      <span class="mt-2">Copy results link: <a class="text-primary" :href="pageURL">{{ pageURL }}</a></span>
+      <span class="mt-2 px-2">Copy results link: <a class="text-primary" :href="pageURL">{{ pageURL }}</a></span>
 
       <PlacesList :places="namedPlaces" />
     </div>
@@ -58,6 +65,12 @@ export default {
     </footer>
   </div>
   <div v-else>
-    <h1 class="text-3xl font-bold mt-10">Loading results...</h1>
+    <div class="flex flex-col items-center w-full">
+      <div v-if="error">
+        <router-link to="/" class="mt-6 block text-primary">&lt; return home</router-link>
+        <h1 v-if="error" class="text-3xl font-bold mt-10">{{ error }}</h1>
+      </div>
+      <h1 v-else class="text-3xl font-bold mt-10">Loading results...</h1>
+    </div>
   </div>
 </template>

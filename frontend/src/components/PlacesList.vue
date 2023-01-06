@@ -20,7 +20,7 @@
 </script>
 
 <template>
-  <div class="overflow-x-auto mt-4">
+  <div class="overflow-x-auto mt-4 px-2">
     <table class="table table-compact w-full">
       <thead>
         <tr>
