@@ -12,13 +12,15 @@ export default {
   },
   methods: {
     submit() {
-      let result = places.filter(place => place.name.toLowerCase() == this.placeInput.toLowerCase() && place.state == this.currentState);
-      if (result.length > 0) {
-        for (let place of result) {
-          this.$emit('newPlace', {name: place.name, lat: place.lat, lng: place.lng, state: place.state});
+      let foundPlace = false;
+      for (const [index, place] of places.entries()) {
+        if (place.name.toLowerCase() == this.placeInput.toLowerCase() && place.state == this.currentState) {
+          this.$emit('newPlace', {name: place.name, lat: place.lat, lng: place.lng, state: place.state, id: index});
+          foundPlace = true;
+          this.errorPlaceName = '';
         }
-        this.errorPlaceName = '';
-      } else {
+      }
+      if (!foundPlace) {
         clearTimeout(this.timeout);
         this.errorPlaceName = this.placeInput;
         this.timeout = setTimeout(() => {

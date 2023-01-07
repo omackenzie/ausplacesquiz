@@ -33,7 +33,7 @@ export default {
       // Convert named places to list of IDs
       let placeIDs = [];
       for (let namedPlace of this.namedPlaces) {
-        placeIDs.push(places.findIndex(place => place.name === namedPlace.name));
+        placeIDs.push(namedPlace.id);
       }
 
       supabase
