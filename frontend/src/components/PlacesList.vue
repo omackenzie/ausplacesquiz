@@ -29,8 +29,8 @@
           <th>State</th>
         </tr>
       </thead>
-      <tbody v-for="(place, index) in places.slice().reverse()" v-bind:key="place.name">
-        <tr>
+      <tbody>
+        <tr v-for="(place, index) in places.slice().reverse()" v-bind:key="place.name">
           <th>{{ places.length - index }}</th>
           <td>{{ place.name }}</td>
           <td>{{ stateLongForm(place.state) }}</td>
