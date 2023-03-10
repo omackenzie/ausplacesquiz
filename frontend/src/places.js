@@ -2598,7 +2598,6 @@ export const places = [
   {name:"Abingdon Downs",lat:-17.81292017,lng:143.4700215,state:"QLD"},
   {name:"Gilbert River",lat:-18.25597704,lng:142.753083,state:"QLD"},
   {name:"Diamantina Lakes",lat:-23.94125783,lng:141.2448308,state:"QLD"},
-  {name:"Birdsville",lat:-24.98639,lng:138.26194,state:"QLD"},
   {name:"Bedourie",lat:-24.43154708,lng:139.4389952,state:"QLD"},
   {name:"Winton",lat:-22.382223,lng:143.038345,state:"QLD"},
   {name:"Opalton",lat:-23.01985883,lng:142.3520312,state:"QLD"},
