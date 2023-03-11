@@ -35,7 +35,7 @@ export default {
         :attribution="attribution"
       ></l-tile-layer>
 
-      <l-circle v-for="place in places" v-bind:key="place.name" :lat-lng="[place.lat, place.lng]" :radius=3000 color="red" :fill=true fillColor="red">
+      <l-circle v-for="place in places" v-bind:key="place.name" :lat-lng="[place.lat, place.lng]" :radius=1000 color="red" :fill=true fillColor="red">
         <l-tooltip>{{ place.name }}</l-tooltip>
       </l-circle>
     </l-map>
